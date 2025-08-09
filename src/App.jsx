@@ -14,6 +14,7 @@ const App = () => {
 
   const [notificationMessage, setNotificationMessage] = useState({
     message: '',
+    isError: false,
   })
   useEffect(() => {
     blogService.getAll().then((blogs) => setBlogs(blogs))
@@ -43,12 +44,12 @@ const App = () => {
       setPassword('')
       changeNotificationMessage({
         message: `Welcome ${user.name}!`,
-        isError: true,
+        isError: false,
       })
     } catch (exception) {
       changeNotificationMessage({
         message: 'wrong name or password',
-        isError: false,
+        isError: true,
       })
       console.log('Wrong credentials')
     }
@@ -74,6 +75,7 @@ const App = () => {
       console.log(e.response.data)
     }
   }
+  
   if (user === null)
     return (
       <div>
