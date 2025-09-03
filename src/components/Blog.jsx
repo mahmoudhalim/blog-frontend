@@ -11,17 +11,19 @@ const Blog = ({ blog, removeBlog, likeBlog }) => {
   }
 
   return (
-    <div style={blogStyle}>
+    <div style={blogStyle} className="blog">
       {blog.title}
+      <div>{blog.author}</div>
       <button onClick={() => setShowDetails(!showDetails)}>
         {showDetails ? 'hide' : 'show'}
       </button>
       <div style={{ display: showDetails ? '' : 'none' }}>
-        <div>{blog.author}</div>
         <div>{blog.url}</div>
         <div>
           {blog.likes}
-          <button type="button" onClick={() => likeBlog(blog)}>like</button>
+          <button type="button" onClick={() => likeBlog(blog)}>
+            like
+          </button>
         </div>
         <div>
           <button type="button" onClick={() => removeBlog(blog.id)}>
