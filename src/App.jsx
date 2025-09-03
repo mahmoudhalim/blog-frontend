@@ -67,7 +67,7 @@ const App = () => {
       const blog = await blogService.create(newBlog)
       setBlogs(blogs.concat(blog))
       changeNotificationMessage({
-        message: `a new blog has been added!`,
+        message: 'a new blog has been added!',
         isError: false,
       })
     } catch (e) {
@@ -79,8 +79,7 @@ const App = () => {
     }
   }
   const removeBlog = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this blog?'))
-      return
+    if (!window.confirm('Are you sure you want to delete this blog?')) return
     try {
       await blogService.remove(id)
       setBlogs(blogs.filter((b) => b.id !== id))
@@ -92,7 +91,7 @@ const App = () => {
       console.log(e.response.data)
     }
   }
-  
+
   const likeBlog = async (blog) => {
     try {
       const updatedBlog = await blogService.like(blog)
@@ -153,7 +152,12 @@ const App = () => {
           <BlogForm createBlog={createBlog} />
         </Togglable>
         {blogs.map((blog) => (
-          <Blog key={blog.id} blog={blog} removeBlog={removeBlog} likeBlog={likeBlog} />
+          <Blog
+            key={blog.id}
+            blog={blog}
+            removeBlog={removeBlog}
+            likeBlog={likeBlog}
+          />
         ))}
       </div>
     )

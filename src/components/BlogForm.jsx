@@ -12,7 +12,7 @@ const BlogForm = ({ createBlog }) => {
       author,
       url,
     }
-    const response = await createBlog(newblog)
+    await createBlog(newblog)
     setTitle('')
     setAuthor('')
     setUrl('')
